@@ -4,7 +4,7 @@ class MapsController < ApplicationController
         state    = params[:state].to_s
 
         if state.present?
-            result = OverpassService.beaches_in_maryland(state)
+            result = OverpassService.beaches_in_state(state)
             @beaches = result[:beaches]
             flash.now[:alert] = result[:error] if result[:error]
         else

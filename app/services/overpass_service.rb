@@ -5,7 +5,7 @@ require "json"
 class OverpassService
     ENDPOINT = "https://overpass-api.de/api/interpreter"
 
-    def self.beaches_in_maryland(state)
+    def self.beaches_in_state(state)
         return { beaches: [], error: nil } if state.blank?
 
         query = <<~OVERPASS
