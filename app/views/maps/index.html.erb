@@ -6,9 +6,9 @@
         <div id="map-form" class="row border border-secondary rounded p-2 m-2">
             <form action="/maps" method="GET">
                 <div class=mb-3>
-                    <label for="state-select" class="form-label">Select a State</label>
+                    <label for="state-select" class="form-label">States</label>
                     <select id="state-select" name="state" class="form-select" aria-label="State select">
-                        <option selected>Open this select menu</option>
+                        <option selected>Select one</option>
                         <% @states.each do |state| %>
                             <option value="<%= state.name %>"><%= state.name %></option>
                         <% end %>
