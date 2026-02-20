@@ -1,3 +1,29 @@
-<h1><%= t ".title" %></h1>
-
-<div id="map" data-controller="map"></div>
+<div class="row p-2 m-2">
+    <h1><%= t ".title" %></h1>
+</div>
+<div class="row">
+    <div class="col-3 container">
+        <div id="map-form" class="row border border-secondary rounded p-2 m-2">
+            <form action="/maps" method="GET">
+                <div class=mb-3>
+                    <label for="state-select" class="form-label">Select a State</label>
+                    <select id="state-select" name="state" class="form-select" aria-label="State select">
+                        <option selected>Open this select menu</option>
+                        <% @states.each do |state| %>
+                            <option value="<%= state.name %>"><%= state.name %></option>
+                        <% end %>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary float-end">Submit</button>
+            </form>
+        </div>   
+    </div> 
+    <div class="col border border-secondary rounded p-2 m-2">
+        <div 
+            id="map"
+            data-controller="map"
+            data-map-beaches-value="<%= @beaches.to_json %>"
+        >
+        </div>    
+    </div>   
+</div>

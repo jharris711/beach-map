@@ -11,6 +11,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "maps#index"
-
-  resources :maps
+  get "maps" => "maps#index"
+  post "maps" => "maps#update"
 end

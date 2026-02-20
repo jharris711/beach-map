@@ -28,4 +28,6 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  maps:
+    index:
+      title: "Find a beach"
