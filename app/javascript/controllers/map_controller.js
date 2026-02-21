@@ -3,11 +3,18 @@ import L from 'leaflet'
 
 export default class extends Controller {
     static values = {
-        beaches: Array
+        beaches: Array,
+        location: Object
     }
 
     connect() {
-        this.map = L.map(this.element).setView([39.0, -77.0], 10);
+        console.log("*****************LOCATION", this.locationValue)
+        const { latitude, longitude } = this.locationValue;
+        const center = latitude && longitude 
+            ? L.latLng(latitude, longitude) 
+            : L.latLng(39.0, -77.0);
+
+        this.map = L.map(this.element).setView(center, 7);
 
         var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}', {
             minZoom: 0,
@@ -33,7 +40,6 @@ export default class extends Controller {
 
         // Plot beaches from Overpass
         this.beachesValue.forEach(beach => {
-            console.log("***Beach", beach)
             const lat = beach.lat ?? beach.center?.lat;
             const lon = beach.lon ?? beach.center?.lon;
             if (!lat || !lon) return;
